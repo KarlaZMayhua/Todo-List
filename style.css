@@ -1,0 +1,30 @@
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+
+/* cuadro*/
+.delete-button {
+  color: red;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+
+
+
+
