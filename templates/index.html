@@ -1,4 +1,38 @@
 <!DOCTYPE html>
+
+<style>
+  
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+
+/* cuadro*/
+.delete-button {
+  color: red;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+
+
+</style>
+
+
+
 <html>
 <head>
   <title>Todo List</title>
@@ -6,7 +40,7 @@
 </head>
 <body>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+ 
   <h1>TODO LIST</h1>
   
   <form id="word-form">
@@ -18,7 +52,53 @@
   <p class="error-message" id="error-message" style="display: none;">Tiene que ingresar una palabra!!.</p>
   
   <ul id="word-list"></ul>
+<script>
   
+  function agregarPalabra() {
+      var wordInput = document.getElementById("word-input");
+      var wordList = document.getElementById("word-list");
+      var newWord = document.createElement("li");
+      var checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      
+      var wordText = document.createElement("span");
+      wordText.textContent = wordInput.value;
+      
+      var deleteButton = document.createElement("span");
+      deleteButton.className = "delete-button";
+      deleteButton.textContent = "  x   ";
+      deleteButton.onclick = function() {
+        newWord.remove();
+      };
+      
+      if (wordInput.value.trim() === "") {
+        var errorMessage = document.getElementById("error-message");
+        errorMessage.style.display = "block";
+        return;
+      }
+      
+      var errorMessage = document.getElementById("error-message");
+      errorMessage.style.display = "none";
+      
+      newWord.appendChild(checkbox);
+      newWord.appendChild(wordText);
+      newWord.appendChild(deleteButton);
+      
+      wordList.appendChild(newWord);
+      
+      wordInput.value = "";
+    }
+    
+    function seleccionarTodo() {
+      var checkboxes = document.querySelectorAll("input[type='checkbox']");
+      checkboxes.forEach(function(checkbox) {
+        checkbox.checked = true;
+      });
+    }
+    
+ 
+  
+</script>
   
 </body>
 </html>
